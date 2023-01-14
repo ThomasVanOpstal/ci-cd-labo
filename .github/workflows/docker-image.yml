@@ -31,9 +31,9 @@ jobs:
           push: true
           tags: thomasvanopstal/labo:latest
           
-      - name: Invoke deployment hook
-        uses: distributhor/workflow-webhook@v2
-        env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
+      - name: Webhook
+        uses: joelwmale/webhook-action@master
+        with:
+          url: ${{ secrets.WEBHOOK_URL }}
           
 
