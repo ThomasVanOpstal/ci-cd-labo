@@ -54,5 +54,14 @@ jobs:
           to: johndoe@gmail.com,doejohn@gmail.com
           # from email name
           from: John Doe
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+       
 
 
