@@ -60,9 +60,9 @@ jobs:
         uses: dawidd6/action-send-mail@v2
         with:
           # mail server settings
-          Server name: outlook.office365.com
-          Port: 993
-          Encryption method: TLS
+          server_address: outlook.office365.com
+          server_port: 465
+          secure: true
           # user credentials
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
