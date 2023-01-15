@@ -37,17 +37,15 @@ jobs:
           url: ${{ secrets.WEBHOOK_URL }}
           
 
-      - name: Get Version Number
-        run: echo ::set-output name=version::$(grep -m1 -oP "(?<=version = ')[^']+" animal.java)
-
+    
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get_version_number.outputs.version }}
-          release_name: Release ${{ steps.get_version_number.outputs.version }}
+          tag_name: ${{ github.run_number}}
+          release_name: Release ${{ github.run_number}}
           draft: false
           prerelease: false
 
