@@ -55,7 +55,25 @@ jobs:
           draft: false
           prerelease: false
 
-
+      - name: Send mail
+        if: always()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          # mail server settings
+          Server name: outlook.office365.com
+          Port: 993
+          Encryption method: TLS
+          # user credentials
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          # email subject
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          # email body as text
+          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          # comma-separated string, send email to
+          to: thomas.vanopstal@outlook.be
+          # from email name
+          from: John
 
 
 
