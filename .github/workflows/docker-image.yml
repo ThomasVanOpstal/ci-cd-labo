@@ -38,7 +38,7 @@ jobs:
           
 
       - name: Get Version Number
-        run: echo ::set-output name=version::$(grep -m1 -oP "(?<=version = ')[^']+" setup.py)
+        run: echo ::set-output name=version::$(grep -m1 -oP "(?<=version = ')[^']+" animal.java)
 
       - name: Create Release
         id: create_release
