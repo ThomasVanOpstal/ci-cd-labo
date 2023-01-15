@@ -51,9 +51,9 @@ jobs:
           # email body as text
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           # comma-separated string, send email to
-          to: johndoe@gmail.com,doejohn@gmail.com
+          to: thomas.vanopstal@outlook.be
           # from email name
-          from: John Doe
+          from: jan
       - name: release
         uses: actions/create-release@v1
         id: create_release
