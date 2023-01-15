@@ -37,16 +37,26 @@ jobs:
           url: ${{ secrets.WEBHOOK_URL }}
           
 
-      - name: release
-        uses: actions/create-release@v1
+      - name: Get Version Number
+        run: echo ::set-output name=version::$(grep -m1 -oP "(?<=version = ')[^']+" setup.py)
+
+      - name: Create Release
         id: create_release
+        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          tag_name: ${{ steps.get_version_number.outputs.version }}
+          release_name: Release ${{ steps.get_version_number.outputs.version }}
           draft: false
           prerelease: false
-          release_name: ${{ steps.version.outputs.version }}
-          tag_name: ${{ github.ref }}
+
+
+
+
+
+
+
        
 
 
