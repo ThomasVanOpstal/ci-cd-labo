@@ -36,25 +36,7 @@ jobs:
         with:
           url: ${{ secrets.WEBHOOK_URL }}
           
-      - name: Send mail
-        if: always()
-        uses: dawidd6/action-send-mail@v2
-        with:
-          # mail server settings
-          server_address: smtp.office365.com
-          server_port: 587
-          # user credentials
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          ssl: true
-          # email subject
-          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
-          # email body as text
-          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          # comma-separated string, send email to
-          to: thomas.vanopstal@outlook.be
-          # from email name
-          from: jan
+
       - name: release
         uses: actions/create-release@v1
         id: create_release
