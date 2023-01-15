@@ -5,12 +5,18 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+    
+permissions:
+  contents: write
+  pull-requests: write 
+  issues: read
+  packages: none
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
+
 
     steps:
     - uses: actions/checkout@v3
@@ -39,7 +45,6 @@ jobs:
 
     
       - name: Create Release
-        
         id: create_release
         uses: actions/create-release@v1
         env:
